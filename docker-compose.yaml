@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  server:
+    restart: on-failure
+    image: redmadrobots
+    ports:
+      - "8090:8090"
+    container_name: redmadrobots_application
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - my-db
+    environment:
+      - MYSQL_PASSWORD=bestuser
+      - MYSQL_USER=bestuser
+      - MYSQL_DATABASE=redmadrobots
+    depends_on:
+      - cache
+      - db
+    links:
+      - db
+      - cache
+  db:
+    image: mysql:8.0.30
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'redmadrobots'
+      MYSQL_USER: 'bestuser'
+      MYSQL_PASSWORD: 'bestuser'
+      MYSQL_ROOT_PASSWORD: 'Fommkaa31'
+    ports:
+      - '3333:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+  cache:
+    image: redis
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+# Names our volume
+volumes:
+  my-db:
