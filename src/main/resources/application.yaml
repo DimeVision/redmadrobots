@@ -1,0 +1,40 @@
+server:
+  port: 8090
+
+springdoc:
+  swagger-ui:
+    path: /swagger-doc
+    display-request-duration: true
+    disable-swagger-default-url: true
+    csrf:
+      enabled: true
+    operations-sorter: alpha
+  api-docs:
+    path: /swagger-json
+
+spring:
+  liquibase:
+    enabled: true
+    default-schema: redmadrobots
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    drop-first: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3333/redmadrobots
+    username: bestuser
+    password: bestuser
+  redis:
+    port: 6379
+    password: secret
+    host: localhost
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      ddl-auto: none
