@@ -1,0 +1,26 @@
+spring:
+  liquibase:
+    enabled: true
+    driver-class-name: org.h2.Driver
+    drop-first: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;MODE=MySQL;DB_CLOSE_DELAY=-1;CASE_INSENSITIVE_IDENTIFIERS=TRUE
+    username: test
+    password: test
+  redis:
+    port: 6379
+    password: secret
+    host: localhost
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.H2Dialect
