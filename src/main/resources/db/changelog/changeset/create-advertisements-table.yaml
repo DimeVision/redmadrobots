@@ -1,0 +1,78 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-advertisements-table
+      author: VKamalov
+      comment: "Создание таблицы с объявлениями"
+      changes:
+        - createTable:
+            remarks: Таблица с объявлениями
+            tableName: advertisements
+            columns:
+              - column:
+                  remarks: "ID объявления"
+                  name: id
+                  type: INT UNSIGNED
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  remarks: "Заголовок"
+                  name: title
+                  type: VARCHAR(63)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Описание"
+                  name: description
+                  type: VARCHAR(511)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Контакты владельца объявления"
+                  name: contact
+                  type: VARCHAR(63)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Статус объявления"
+                  name: status
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Статус брони"
+                  name: deal_status
+                  type: TINYINT(10)
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "ID покупателя"
+                  name: customer_id
+                  type: INT UNSIGNED
+                  constraints:
+                    nullable: true
+              - column:
+                  remarks: "ID пользователя (внешний ключ)"
+                  name: users_id
+                  type: INT UNSIGNED
+                  constraints:
+                    nullable: false
+                    foreignKeyName: users_id
+                    references: users(id)
+              - column:
+                  remarks: "Время создания объявления"
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Время последнего изменения в объявлении"
+                  name: modified_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false

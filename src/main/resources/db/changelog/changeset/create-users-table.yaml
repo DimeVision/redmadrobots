@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user-table
+      author: VKamalov
+      comment: "Создание таблицы с данными о пользователях"
+      changes:
+        - createTable:
+            tableName: users
+            remarks: "Таблица с данными о пользователях"
+            columns:
+              - column:
+                  remarks: "ID пользователя"
+                  name: id
+                  type: INT UNSIGNED
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  remarks: "Электронная почта"
+                  name: email
+                  type: VARCHAR(127)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  remarks: "Пароль"
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Роль в системе"
+                  name: role
+                  type: TINYINT(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Время создания аккаунта"
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Время последнего изменения в аккаунте"
+                  name: modified_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false

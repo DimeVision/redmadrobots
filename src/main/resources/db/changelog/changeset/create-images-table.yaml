@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-images-table
+      author: VKamalov
+      comment: "Создание таблицы для хранения изображений объявления"
+      changes:
+        - createTable:
+            tableName: images
+            remarks: "Таблица для изображений объявления"
+            columns:
+              - column:
+                  remarks: "ID"
+                  name: id
+                  type: INT UNSIGNED
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  remarks: "Название файла"
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Тип контента"
+                  name: type
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Изображение"
+                  name: image
+                  type: BLOB
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "ID объявления (внешний ключ)"
+                  name: advertisements_id
+                  type: INT UNSIGNED
+                  constraints:
+                    nullable: false
+                    foreignKeyName: advertisements_id
+                    references: advertisements(id)
