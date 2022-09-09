@@ -3,7 +3,7 @@ package com.dimevision.redmadrobots.controller.user.auth;
 import com.dimevision.redmadrobots.model.dto.user.LoginRequest;
 import com.dimevision.redmadrobots.model.dto.user.LoginResponse;
 import com.dimevision.redmadrobots.model.dto.token.RefreshTokenResponse;
-import com.dimevision.redmadrobots.service.UserAuthService;
+import com.dimevision.redmadrobots.service.user.auth.UserAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

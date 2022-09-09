@@ -5,7 +5,7 @@ import com.dimevision.redmadrobots.model.dto.advertisement.AdvertisementDTO;
 import com.dimevision.redmadrobots.model.dto.advertisement.AdvertisementRegistrationRequest;
 import com.dimevision.redmadrobots.model.dto.advertisement.AdvertisementRegistrationResponse;
 import com.dimevision.redmadrobots.model.dto.image.ImageDTO;
-import com.dimevision.redmadrobots.service.AdvertisementService;
+import com.dimevision.redmadrobots.service.advertisement.AdvertisementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

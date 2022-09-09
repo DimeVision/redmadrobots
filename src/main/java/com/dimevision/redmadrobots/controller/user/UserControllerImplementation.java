@@ -3,7 +3,7 @@ package com.dimevision.redmadrobots.controller.user;
 import com.dimevision.redmadrobots.model.dto.user.UserDTO;
 import com.dimevision.redmadrobots.model.dto.user.UserRegistrationRequest;
 import com.dimevision.redmadrobots.model.dto.user.UserRegistrationResponse;
-import com.dimevision.redmadrobots.service.UserService;
+import com.dimevision.redmadrobots.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
